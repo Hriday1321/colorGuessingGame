@@ -1,4 +1,5 @@
 var diff = 6;
+var lives = 2;
 var colors = generateRandomColors(diff);
 var squares = document.querySelectorAll('.square');
 var goal = colors[Math.floor(Math.random() * colors.length)];
@@ -26,7 +27,14 @@ for(var i=0; i < squares.length; i++)
 		else
 		{
 			this.style.backgroundColor = '#555555'; 
-			msg.textContent = 'Try Again';
+			lives--;
+			if(lives == 0)
+			{
+				msg.textContent = 'You Lost!';
+				correct(goal);
+			}
+			else
+				msg.textContent = 'Lives left-' + lives;
 		}
 	})
 }
@@ -35,7 +43,7 @@ function correct(color){
 	for(var i = 0; i < colors.length; i++){
 		squares[i].style.backgroundColor = color;
 	}
-	reset.textContent = 'Try Again';
+	reset.textContent = 'Play Again';
 }
 
 function generateRandomColors(num){
@@ -73,4 +81,5 @@ function resetting(){
 	h1.style.backgroundColor = '#a83242';
 	reset.textContent = 'New Colors';
 	msg.textContent = '';
+	lives = 2;
 }
