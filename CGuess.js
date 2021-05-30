@@ -34,7 +34,7 @@ for(var i=0; i < squares.length; i++)
 				correct(goal);
 			}
 			else
-				msg.textContent = 'Lives left-' + lives;
+				msg.textContent = 'Lives left -' + lives;
 		}
 	})
 }
